@@ -1,4 +1,5 @@
 import React from 'react';
+import './ProjetList.css';
 import { MDBDataTableV5 } from 'mdbreact';
 
 function ProjetList() {
