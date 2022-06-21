@@ -23,11 +23,28 @@ module.exports = {
                 name,
                 technology {
                   id,
-                  __typename
+                  label
                 }
               }
             }
                 `
+        }
+    },
+
+    PROJECT_ENV_VARS: (projectId) => {
+        return {
+            query: `
+            query{
+                projectEnvironmentVariables(projectId: "` + projectId + `"){
+                        id,
+                        name,
+                        scope,
+                        value,
+                        description,
+                        isPassword
+                    }
+                }
+            `
         }
     }
 }

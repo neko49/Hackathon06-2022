@@ -1,9 +1,6 @@
 const axios = require("axios");
 const config = require('../config/config');
 const graphQLRequests = require('../graphql/requests')
-module.exports = {
-    getAll,
-};
 
 async function getAll(jwt) {
     return await axios.post(config.SAAGIE_API_URL + '/projects/api/platform/2/graphql',
@@ -30,5 +27,5 @@ async function getJobs(jwt, id) {
 
 module.exports = {
     getAll,
-    getJobs
+    getJobs,
 };
