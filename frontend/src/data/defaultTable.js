@@ -1,4 +1,4 @@
-export const defaultTable = {
+module.exports  = {
     columns: [
         {
             label: 'Name',
