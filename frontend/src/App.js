@@ -1,16 +1,13 @@
+import logo from './logo.svg';
 import './App.css';
+import Home from './components/Home/home';
+import ProjetList from './components/projetList/ProjetList';
+
 
 function App() {
-    return (
-        <div>
-            {
-                1 === 1 ?
-                    <p>Test</p>
-                    :
-                    <p>Offline</p>
-            }
-        </div>
-    );
+  return (
+    <ProjetList/>
+  );
 }
 
 export default App;
