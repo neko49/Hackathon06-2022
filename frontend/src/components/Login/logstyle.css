@@ -1,0 +1,140 @@
+@font-face {
+    font-family: "font-1";
+    src: url(./fonts/IBMPlexSans-Light.ttf);
+}
+
+@font-face {
+    font-family: "font-2";
+    src: url(./fonts/IBMPlexSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: "font-3";
+    src: url(./fonts/IBMPlexSans-Bold.ttf);
+}
+
+h1 {
+    font-family: "font-2", serif;
+    font-weight: 100;
+    font-size: 2.64062rem;
+    margin: 1.5625rem 0;
+    display: block;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+* {
+        box-sizing: border-box;
+            word-wrap: break-word;
+            -webkit-text-decoration-skip: ink;
+            text-decoration-skip-ink: auto;
+}
+
+body {
+    background: #ffffff;
+    color: #253c5b;
+}
+
+.log-container {
+    background: #ffffff;
+    height: 20em;
+    width: 21em;
+    margin: auto;
+    margin-top: 15%;
+    border-radius: 5px;
+}
+
+.header {
+    color: #e52728;
+    text-align: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.log-input input {
+    position: relative;
+        z-index: 1;
+        display: block;
+        width: 100%;
+        padding: 0.39062rem 0.5625rem;
+        margin: 0;
+        font-weight: 400;
+        font-size: 1rem;
+        line-height: 1.5;
+        vertical-align: middle;
+        background-color: #fbfcfe;
+        border: 0.0625rem solid #d9dbe3;
+        border-radius: 0.375rem;
+        box-shadow: none;
+        transition: border-color .15s
+}
+
+.login-button {
+    padding: 8px;
+    margin: 5px;
+    color: #fff;
+    background: rgb(0, 81, 255);
+    border-radius: 5px;
+    border: none;
+    width: 70px;
+    ;
+}
+.password{
+    position: relative;
+    max-width: none;
+    flex-basis: auto;
+}
+
+.password-button {
+    z-index: 1;
+        position: absolute;
+        display: inline-flex;
+        top: 50%;
+        left: 0;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+        padding: 0.39062rem 0.5625rem 0.39062rem 1rem;
+        line-height: 1.5;
+        text-align: center;
+        color: #a0b2ca;
+        font-size: 1rem;
+        font-weight: 300;
+        transition: .2s;
+        border: none;
+        background: transparent;
+}
+.password-button svg:hover {
+    color:black;
+    transition: .3s;
+    cursor: pointer;
+}
+.password input {
+display: block;
+position: relative;
+width: 100%;
+margin: 0;
+padding-left: 2.5em
+}
+.forgot{
+    order: -1;
+        margin-right: auto;
+        flex: none;
+}
+.bottom-grid{
+    flex-grow: 0;
+    max-width: none;
+    flex-basis: auto;
+    align-items: center;
+    justify-content: flex-end;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -1rem !important;
+    margin-top: -0.5rem !important;
+    margin-bottom: -0.5rem !important;
+}
