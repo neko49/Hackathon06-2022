@@ -1,8 +1,32 @@
 .content{
     margin: 10px;
 }    
-.title{
+.title_content{
     text-align: center;
+}
+.title{
+    text-align:center;
+    font-size:40px;
+    padding:50px 0px 0px;
+    font-family:Verdana;
+    color:red;
+}
+
+.BtnImp {
+    font-size:15px;
+    color:white;
+    font-family:Verdana;
+    background-color:#0323A9;
+    border-radius:18px;
+    padding:7px;
+    float:right;
+    border:0px;
+}
+
+.content_import_btn{
+    padding-right:30px;
+    width:100%;
+    height:50px;
 }
 table{
     width: 90%;

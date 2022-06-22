@@ -15,11 +15,27 @@ const ProjectList = () => {
     return (
         <Fragment>
             <div className='content'>
-                <div className="title">
-                    <h1>Liste de tous les projets Saggie</h1>
+                <div className="title_content">
+                <div class="title">
+                    SAAGIE
+                </div>        
+                <h1>Liste de tous les projets Saggie</h1>
+                <div class="content_import_btn">
+                    <button class="BtnImp">Importer</button> 
+                </div>
                 </div>
                 <div className='content_table'>
-                    <MDBDataTableV5 hover entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={defaultTable} fullPagination />;
+                    <MDBDataTableV5
+                        hover
+                        entriesOptions={[5, 20, 25]}
+                        entries={5}
+                        pagesAmount={4}
+                        data={defaultTable}
+                        pagingTop
+                        searchTop
+                        searchBottom={false}
+                        barReverse
+                    />
                 </div>
             </div>
         </Fragment>
