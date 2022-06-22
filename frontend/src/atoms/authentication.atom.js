@@ -5,4 +5,4 @@ const authenticationState = atom({
     default: localStorage.getItem('jwt') // valeur par défaut (alias valeur initials)
 });
 
-export default authenticationState
+export default authenticationState;

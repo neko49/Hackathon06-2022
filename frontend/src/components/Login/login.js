@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import axios from "axios";
 import "./logstyle.css";
 import config from '../../config/config'
+import {useRecoilState} from "recoil";
+import authenticationState from "../../atoms/authentication.atom";
 
 const initialCredentials = {
     username: '',
@@ -9,8 +11,8 @@ const initialCredentials = {
 }
 
 const Log = () => {
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+
+    const [authentication, setAuthentication] = useRecoilState(authenticationState);
     const [credentials, setCredentials] = useState({})
     const [error, setError] = useState('');
 
@@ -28,19 +30,21 @@ const Log = () => {
         axios.post(
             config.BACKEND_URL + '/auth/login',
             {
-                login: username,
-                password: password,
+                login: credentials.username,
+                password: credentials.password,
             },
             {
                 headers: {
+                    'Content-type': 'application/json',
                     "Saagie-Realm": "demo",
                 },
             }
         )
             .then((response) => {
                 //authentification OK
-                if(response?.data?.jwt) {
+                if (response?.data?.jwt) {
                     localStorage.setItem('jwt', response.data.jwt)
+                    setAuthentication(response.data.jwt)
                 } else {
                     setError('Mot de passe incorrect!')
                     setTimeout(() => {
@@ -48,7 +52,7 @@ const Log = () => {
                     }, 5000)
                     console.error('Unknown error');
                 }
-                console.log(response);
+                console.log(response.data);
             })
             .catch((err) => {
                 //authentification fail
