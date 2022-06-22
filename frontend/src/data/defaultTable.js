@@ -1,17 +1,31 @@
 module.exports  = {
     columns: [
         {
-          label: 'Nom de projet',
-          field: 'Nom_de_projet',
+          label: 'name',
+          field: 'name',
           width: 150,
           attributes: {
             'aria-controls': 'DataTable',
-            'aria-label': 'Nom de projet',
+            'aria-label': 'name',
           },
         },
         {
-          label: 'Audit',
-          field: 'Audit',
+          label: 'description',
+          field: 'description',
+          width: 150,
+          attributes: {
+            'aria-controls': 'DataTable',
+            'aria-label': 'description',
+          },
+        },
+        {
+          label: 'audit',
+          field: 'audit',
+          width: 270,
+        },
+        {
+          label: 'Nombre de jobs',
+          field: 'jobs',
           width: 270,
         },
         {
@@ -22,9 +36,9 @@ module.exports  = {
       ],
       rows: [
         {
-          Nom_de_projet: 'Projet test',
-          Audit: 'Version 1.1',
-          Copier_Backup: 'Edinburgv',
+          name: 'Projet test',
+          audit: 'Version 1.1',
+          buttons: 'Edinburgv',
         },
       ]
     }

@@ -5,7 +5,7 @@ const {getAll, getJobs, getEnvVars} = require("../controllers/project.controller
 
 
 router.use(cors());
-router.post('/', async (req, res) => {
+router.get('/', async (req, res) => {
   getAll(req, res)
 });
 router.get('/:id/jobs', async (req, res) => {

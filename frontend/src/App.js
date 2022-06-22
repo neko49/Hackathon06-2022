@@ -2,9 +2,9 @@ import "./App.css";
 import {useRecoilState} from "recoil";
 import authenticationState from "./atoms/authentication.atom";
 import Log from "./components/Login/login";
-import ProjectList from "./components/Projects/ProjectList";
 import {Fragment} from "react";
 import Home from "./components/Home/Home";
+import {Toaster} from "react-hot-toast";
 
 const App = () => {
 
@@ -12,6 +12,7 @@ const App = () => {
 
     return (
         <Fragment>
+            <Toaster/>
             {
                 authentication !== null && authentication !== '' ?
                     <Home/>
