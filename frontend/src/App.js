@@ -3,6 +3,7 @@ import {useRecoilState} from "recoil";
 import authenticationState from "./atoms/authentication.atom";
 import Log from "./components/Login/login";
 import {Fragment} from "react";
+import Home from "./components/Home/Home";
 
 const App = () => {
 
@@ -12,7 +13,7 @@ const App = () => {
         <Fragment>
             {
                 authentication !== null && authentication !== '' ?
-                    <App/>
+                    <Home/>
                     :
                     <Log/>
             }
