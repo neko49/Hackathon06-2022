@@ -1,26 +1,14 @@
 import React, { Fragment } from 'react'
+import ProjectList from "./Projects/ProjectList";
+import './Recherche.css'
 
 function Recherche() {
   return (
     <Fragment>
-        <title>SAAGIE</title>
-        <div>Recherche</div>
-
-        <DataGrid
-  columns={[ 
-    {
-      field: 'Nom de projet',
-      headerName: 'Nom de projet',
-      editable: true,
-      sortable: true,
-      filterable: true,
-    },
-    
-  ]}
-  checkboxSelection
-  disableSelectionOnClick
-  pagination
-/>
+        <div class="title">SAAGIE</div>
+        <ProjectList/>
+        <button class="BtnImp">Importer</button> 
+            
     </Fragment>
   )
 }
