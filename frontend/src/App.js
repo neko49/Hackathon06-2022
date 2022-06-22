@@ -1,23 +1,23 @@
 import "./App.css";
-import {RecoilRoot, useRecoilState} from "recoil";
+import {useRecoilState} from "recoil";
 import authenticationState from "./atoms/authentication.atom";
 import Log from "./components/Login/login";
+import {Fragment} from "react";
 
 const App = () => {
 
-  const [authentication, setAuthentication] = useRecoilState(authenticationState);
+    const [authentication, setAuthentication] = useRecoilState(authenticationState);
 
-  return (
-      <RecoilRoot>
-        {
-          authentication !== null && authentication !== '' ?
-              <App/>
-              :
-              <Log/>
-        }
-        <App/>
-      </RecoilRoot>
-  )
+    return (
+        <Fragment>
+            {
+                authentication !== null && authentication !== '' ?
+                    <App/>
+                    :
+                    <Log/>
+            }
+        </Fragment>
+    )
 }
 
 export default App;
