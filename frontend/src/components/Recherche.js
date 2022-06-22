@@ -6,8 +6,10 @@ function Recherche() {
   return (
     <Fragment>
         <div class="title">SAAGIE</div>
+        <div class="div"><button class="BtnImp">Importer</button> </div>
+        
         <ProjectList/>
-        <button class="BtnImp">Importer</button> 
+        
             
     </Fragment>
   )
