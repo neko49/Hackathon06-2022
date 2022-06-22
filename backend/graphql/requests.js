@@ -46,5 +46,78 @@ module.exports = {
                 }
             `
         }
+    },
+
+    PROJECT_APPS: (projectId) => {
+        return {
+            query: `
+            query{
+                labWebApps(projectId: "` + projectId + `"){
+                        id,
+                        name,
+                        description,
+                        creationDate,
+                        technology{
+                            id,
+                            __typename
+                        },
+                        instances{
+                            id,
+                            status,
+                            statusDetails,
+                            startTime,
+                            endTime,
+                            __typename                            
+                        },
+                        versions{
+                            isCurrent,
+                            exposedPorts{
+                                name,
+                                port,
+                                isAuthenticationRequired,
+                                __typename
+                            },
+                            __typename,
+                        }
+                    }
+                }
+            `
+        }
+    },
+
+    PROJECT_PIPELINES: (projectId) => {
+        return {
+            query: `
+            query{
+                pipelines(projectId: "` + projectId + `"){
+                        id,
+                        name,
+                        description,
+                        alerting{
+                            emails,
+                            loginEmails{
+                                login,
+                                email
+                            },
+                            statusList
+                        },
+                        pipelineInstanceCount,
+                        instances{
+                            id,
+                            status,
+                            startTime,
+                            endTime
+                        },
+                        creationDate,
+                        creator,
+                        isScheduled,
+                        cronScheduling,
+                        scheduleStatus,
+                        scheduleTimezone,
+                        isLegacyPipeline
+                }
+            }
+            `
+        }
     }
 }

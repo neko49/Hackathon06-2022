@@ -1,6 +1,8 @@
 const express = require('express');
 const projectService = require('../services/project.service');
 const envVarService = require('../services/envVar.service');
+const appService = require('../services/app.service');
+const pipelineService = require('../services/pipeline.service');
 
 function getAll(req, res, next) {
     const jwt = req.headers?.authorization
@@ -18,6 +20,7 @@ function getAll(req, res, next) {
     });
 }
 
+
 function getJobs(req, res) {
     const jwt = req.headers?.authorization
     return projectService.getJobs(jwt, req.params.id).then(jobs => {
@@ -33,6 +36,8 @@ function getJobs(req, res) {
         });
     });
 }
+
+
 function getEnvVars(req, res) {
     const jwt = req.headers?.authorization
     return envVarService.getAll(jwt, req.params.id).then(envVars => {
@@ -49,8 +54,44 @@ function getEnvVars(req, res) {
     });
 }
 
+
+function getApps(req, res) {
+    const jwt = req.headers?.authorization
+    return appService.getAll(jwt, req.params.id).then(apps => {
+        res.json({
+            success: true,
+            apps: apps?.data
+        });
+    }).catch((fail) => {
+        console.log(fail)
+        res.json({
+            success: false,
+            message: fail
+        });
+    });
+}
+
+
+function getPipelines(req, res) {
+    const jwt = req.headers?.authorization
+    return pipelineService.getAll(jwt, req.params.id).then(pipelines => {
+        res.json({
+            success: true,
+            pipelines: pipelines?.data
+        });
+    }).catch((fail) => {
+        console.log(fail)
+        res.json({
+            success: false,
+            message: fail
+        });
+    });
+}
+
 module.exports = {
     getAll,
     getJobs,
-    getEnvVars
+    getEnvVars,
+    getApps,
+    getPipelines
 }
