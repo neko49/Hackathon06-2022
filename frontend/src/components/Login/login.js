@@ -43,7 +43,7 @@ const Log = () => {
             .then((response) => {
                 //authentification OK
                 if (response?.data?.jwt) {
-                    localStorage.setItem('jwt', response.data.jwt)
+                    localStorage.setItem('jwt', JSON.stringify(response.data.jwt))
                     setAuthentication(response.data.jwt)
                 } else {
                     setError('Mot de passe incorrect!')
