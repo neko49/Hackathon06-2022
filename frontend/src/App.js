@@ -2,6 +2,7 @@ import "./App.css";
 import {useRecoilState} from "recoil";
 import authenticationState from "./atoms/authentication.atom";
 import Log from "./components/Login/login";
+import ProjectList from "./components/Projects/ProjectList";
 import {Fragment} from "react";
 
 const App = () => {
