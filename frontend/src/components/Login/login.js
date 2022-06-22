@@ -1,23 +1,46 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./logstyle.css";
+import config from "../../config/config";
 
 const Log = () => {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = (e) => {
     e.preventDefault();
 
-    axios({
+    axios
+      .post(
+        `${config.BACKEND_URL}/auth/login`,
+        {
+          login: username,
+          password: password,
+        },
+        {
+          headers: {
+            "Saagie-Realm": "demo",
+          },
+        }
+      )
+      .then((response) => {
+        //authentification OK
+        console.log(response);
+      })
+      .catch((err) => {
+        //authentification fail
+        console.error(err);
+      });
+
+    /*axios({
       method: "post",
-      url: `${process.env.REACT_API_URL}api/user/login`,
+      url: `${process.env.REACT_API_URL}/auth/login`,
       withCredentials: true,
       data: {
         email,
         password,
       },
-    });
+    });*/
   };
 
   return (
@@ -28,17 +51,17 @@ const Log = () => {
         <div className="log-input">
           <form action="" onSubmit={handleLogin} id="sign-up-form">
             <div className="titre">
-              <label htmlFor="email">Username</label>
+              <label htmlFor="username">Username</label>
             </div>
 
             <input
               type="text"
-              name="email"
-              id="email"
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
+              name="username"
+              id="username"
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
             />
-            <div className="email error"></div>
+            <div className="username error"></div>
             <br />
             <div className="titre">
               <label htmlFor="password">Mot de passe</label>
@@ -61,7 +84,7 @@ const Log = () => {
                   width="16"
                   height="16"
                   fill="currentColor"
-                  class="bi bi-eye-slash"
+                  className="bi bi-eye-slash"
                   viewBox="0 0 16 16"
                 >
                   <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z" />
@@ -78,7 +101,7 @@ const Log = () => {
                   Forgot password?
                 </a>
               </div>
-              <button type="submit" className="login-button" onClick="">
+              <button type="submit" className="login-button">
                 Login
               </button>
             </div>
