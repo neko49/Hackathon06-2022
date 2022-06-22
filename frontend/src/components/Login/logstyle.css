@@ -138,3 +138,6 @@ padding-left: 2.5em
     margin-top: -0.5rem !important;
     margin-bottom: -0.5rem !important;
 }
+.password-error{
+    color:red;
+}
