@@ -14,7 +14,14 @@ const ProjectList = () => {
     console.log(defaultTable)
     return (
         <Fragment>
-            <MDBDataTableV5 hover entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={defaultTable} fullPagination />;
+            <div className='content'>
+                <div className="title">
+                    <h1>Liste de tous les projets Saggie</h1>
+                </div>
+                <div className='content_table'>
+                    <MDBDataTableV5 hover entriesOptions={[5, 20, 25]} entries={5} pagesAmount={4} data={defaultTable} fullPagination />;
+                </div>
+            </div>
         </Fragment>
     )
 }

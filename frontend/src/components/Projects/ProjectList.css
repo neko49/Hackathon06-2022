@@ -1,9 +1,18 @@
+.content{
+    margin: 10px;
+}    
+.title{
+    text-align: center;
+}
 table{
-    width: 80%;
+    width: 90%;
     padding: 10px;
     background-color: white;
     border-collapse: collapse;
-    
+    border: 1px #dee2e6 solid;
+}
+.content_table{
+    margin: 1%;
 }
 table thead{
     text-align: left;
