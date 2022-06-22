@@ -1,8 +1,9 @@
 import React from 'react'
+import ProjectList from "../Projects/ProjectList";
 
 function Home() {
   return (
-    <div>home</div>
+    <ProjectList />
   )
 }
 
