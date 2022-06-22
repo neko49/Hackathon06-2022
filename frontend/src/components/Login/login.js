@@ -20,7 +20,7 @@ const Log = () => {
   const [error, setError] = useState("");
 
   const [type, setType] = useState("password");
-  const [icon, setIcon] = useState(eye);
+  const [icon, setIcon] = useState(eyeOff);
   const handleToggle = (e) => {
     e.preventDefault();
     if (type === "password") {
