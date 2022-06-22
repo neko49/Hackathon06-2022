@@ -93,7 +93,7 @@ const Log = () => {
                 </svg>
               </button>
             </div>
-            <div className="password error"></div>
+            <div className="password-error">test</div>
             <br />
             <div className="bottom-grid">
               <div className="forgot">
