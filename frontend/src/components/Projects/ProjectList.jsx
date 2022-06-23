@@ -15,7 +15,7 @@ const ProjectList = () => {
 
     const [authentication, setAuthentication] = useRecoilState(authenticationState);
     const [loading, setLoading] = useState(true);
-    const [projects, setProjects] = useState({});
+    const [projects, setProjects] = useState([]);
 
     useEffect(() => {
         fetch()
@@ -68,7 +68,32 @@ const ProjectList = () => {
                 </div>
                 </div>
                 <div className='content_table'>
-                    <MDBDataTableV5
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Extn.</th>
+                        <th>Start date</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        projects?.forEach(project=>{
+                            return(
+                                <tr>
+                                    <td>{project.id}</td>
+                                </tr>
+                            )
+                        })
+                    }
+                </tbody>
+            </table>
+
+                    {/* <MDBDataTableV5
                         hover
                         entriesOptions={[5, 20, 25]}
                         entries={5}
@@ -78,7 +103,7 @@ const ProjectList = () => {
                         searchTop
                         searchBottom={false}
                         barReverse
-                    />
+                    />  */}
                 </div>
             </div>
         </Fragment>
