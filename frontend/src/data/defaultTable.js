@@ -38,7 +38,7 @@ module.exports  = {
         {
           name: 'Projet test',
           audit: 'Version 1.1',
-          buttons: 'Edinburgv',
+          buttons: '',
         },
       ]
     }
