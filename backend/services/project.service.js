@@ -9,7 +9,6 @@ async function getAll(jwt) {
             headers: {
                 'Content-type': 'application/json',
                 'Authorization': jwt,
-
             }
         })
 }

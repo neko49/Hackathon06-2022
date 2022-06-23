@@ -46,8 +46,8 @@ const ProjectList = () => {
                 'Authorization': 'Bearer ' + authentication
             }
         }).then((res) => {
-            if (res?.data?.projects?.data?.projects) {
-                res.data.projects.data.projects.forEach(project => {
+            if (res?.data?.projects) {
+                res.data.projects.forEach(project => {
                     projects.push(project)
                 })
                 setLoading(false)
@@ -95,7 +95,7 @@ const ProjectList = () => {
                         {
                             projects?.map((project, key) => {
                                 return (
-                                    <tr>
+                                    <tr key={key}>
                                         <td>#{project.id}</td>
                                         <td>{project.name}</td>
                                         <td>{project.description}</td>

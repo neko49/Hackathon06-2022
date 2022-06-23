@@ -13,7 +13,7 @@ function getAll(req, res, next) {
     return projectService.getAll(jwt).then(projects => {
         res.json({
             success: true,
-            projects: projects?.data
+            projects: projects?.data?.data?.projects
         });
     }).catch((fail) => {
         console.log(fail)
@@ -30,7 +30,7 @@ function getJobs(req, res) {
     return projectService.getJobs(jwt, req.params.id).then(jobs => {
         res.json({
             success: true,
-            jobs: jobs?.data
+            jobs: jobs?.data?.data?.jobs
         });
     }).catch((fail) => {
         console.log(fail)
@@ -47,7 +47,7 @@ function getEnvVars(req, res) {
     return envVarService.getAll(jwt, req.params.id).then(envVars => {
         res.json({
             success: true,
-            envVars: envVars?.data
+            envVars: envVars?.data?.data?.projectEnvironmentVariables
         });
     }).catch((fail) => {
         console.log(fail)
@@ -64,7 +64,7 @@ function getApps(req, res) {
     return appService.getAll(jwt, req.params.id).then(apps => {
         res.json({
             success: true,
-            apps: apps?.data
+            apps: apps?.data?.data?.labWebApps
         });
     }).catch((fail) => {
         console.log(fail)
@@ -96,31 +96,31 @@ function getPipelines(req, res) {
 async function backup(req, res) {
     const jwt = req.headers?.authorization
     const project = await projectService.getById(jwt, req.params.id).then(project => {
-        return project.data
+        return project.data?.data?.project
     }).catch((fail) => {
         console.log(fail)
         return null;
     })
     const jobs = await projectService.getJobs(jwt, req.params.id).then(jobs => {
-        return jobs.data
+        return jobs.data?.data?.jobs
     }).catch((fail) => {
         console.log(fail)
         return null;
     });
     const envVars = await envVarService.getAll(jwt, req.params.id).then(envVars => {
-        return envVars.data
+        return envVars.data?.data?.projectEnvironmentVariables
     }).catch((fail) => {
         console.log(fail)
         return null;
     });
     const apps = await appService.getAll(jwt, req.params.id).then(apps => {
-        return apps.data
+        return apps.data?.data?.labWebApps
     }).catch((fail) => {
         console.log(fail)
         return null;
     });
     const pipelines = await pipelineService.getAll(jwt, req.params.id).then(pipelines => {
-        return pipelines.data
+        return pipelines.data?.data?.pipelines
     }).catch((fail) => {
         console.log(fail)
         return null;
