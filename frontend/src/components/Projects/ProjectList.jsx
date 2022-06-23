@@ -64,7 +64,7 @@ const ProjectList = () => {
                             <th>Description</th>
                             <th>Creator</th>
                             <th>NB jobs</th>
-                            <th>Status</th>
+                            <th>Copier/Backup</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -77,7 +77,7 @@ const ProjectList = () => {
                                         <td>{project.description}</td>
                                         <td>{project.creator}</td>
                                         <td>{project.jobsCount}</td>
-                                        <td>{project.status}</td>
+                                        <td><Button color="primary">Click Me</Button></td>
                                     </tr>
                                 )
                             })
