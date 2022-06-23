@@ -1,10 +1,8 @@
 import React, {Fragment, useEffect, useState} from 'react';
-import {MDBDataTableV5} from 'mdbreact';
 import './ProjectList.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
-import defaultTable from '../../data/defaultTable';
 import axios from "axios";
 import config from "../../config/config"
 import {useRecoilState} from "recoil";
@@ -28,22 +26,11 @@ const ProjectList = () => {
                 'Authorization': 'Bearer ' + authentication
             }
         }).then((res) => {
-            if(res?.data?.projects?.data?.projects) {
-                const table = defaultTable;
-                table.rows = [];
+            if (res?.data?.projects?.data?.projects) {
                 res.data.projects.data.projects.forEach(project => {
-                    table.rows.push({
-                        id: project.id,
-                        name: project.name,
-                        description: project.description,
-                        audit: 'this is an example',
-                        creator: project.creator,
-                        status: project.status,
-                        jobs: project.jobsCount,
-                        buttons: '<h2>Loading</h2>',
-                    });
+                    //setProjects([...projects, project])
+                    projects.push(project)
                 })
-                setProjects(table);
                 setLoading(false)
                 successNotification('Projects récupérés avec succès !')
             } else {
@@ -59,39 +46,44 @@ const ProjectList = () => {
         <Fragment>
             <div className='content'>
                 <div className="title_content">
-                <div className="title">
-                    SAAGIE
-                </div>        
-                <h1>Liste de tous les projets Saggie</h1>
-                <div className="content_import_btn">
-                    <button className="BtnImp">Importer</button>
-                </div>
+                    <div className="title">
+                        SAAGIE
+                    </div>
+                    <h1>Liste de tous les projets Saggie</h1>
+                    <div className="content_import_btn">
+                        <button className="BtnImp">Importer</button>
+                    </div>
                 </div>
                 <div className='content_table'>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Extn.</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        projects?.forEach(project=>{
-                            return(
-                                <tr>
-                                    <td>{project.id}</td>
-                                </tr>
-                            )
-                        })
-                    }
-                </tbody>
-            </table>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Creator</th>
+                            <th>NB jobs</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {
+                            projects?.map((project, key) => {
+                                return (
+                                    <tr>
+                                        <td>#{project.id}</td>
+                                        <td>{project.name}</td>
+                                        <td>{project.description}</td>
+                                        <td>{project.creator}</td>
+                                        <td>{project.jobsCount}</td>
+                                        <td>{project.status}</td>
+                                    </tr>
+                                )
+                            })
+                        }
+                        </tbody>
+                    </table>
 
                     {/* <MDBDataTableV5
                         hover
