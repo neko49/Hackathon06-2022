@@ -32,16 +32,7 @@ h1 {
     text-decoration-skip-ink: auto;
 }
 
-body {
-    background: linear-gradient(125deg, #253c5b, #611443, #253c5b,
-            #611443, #253c5b,
-            #611443);
-    ;
-    animation: bganimation 15s infinite;
-    background-size: 400%;
-    background-repeat: no-repeat;
-    height: 937px;
-}
+
 
 @keyframes bganimation {
     0% {
@@ -59,6 +50,14 @@ body {
 
 .login-page {
     display: flex;
+        background: linear-gradient(125deg, #253c5b, #611443, #253c5b,
+                    #611443, #253c5b,
+                    #611443);
+            ;
+            animation: bganimation 15s infinite;
+            background-size: 400%;
+            background-repeat: no-repeat;
+            height: 937px;
 }
 
 
