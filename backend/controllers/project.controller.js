@@ -5,7 +5,8 @@ const appService = require('../services/app.service');
 const pipelineService = require('../services/pipeline.service');
 const JSZip = require('jszip');
 const fs = require("fs");
-const zip = new JSZip();
+const { v4: uuid } = require('uuid');
+const {load} = require("debug");
 
 function getAll(req, res, next) {
     const jwt = req.headers?.authorization
@@ -94,7 +95,13 @@ function getPipelines(req, res) {
 
 async function backup(req, res) {
     const jwt = req.headers?.authorization
-    const jobs = await envVarService.getAll(jwt, req.params.id).then(jobs => {
+    const project = await projectService.getById(jwt, req.params.id).then(project => {
+        return project.data
+    }).catch((fail) => {
+        console.log(fail)
+        return null;
+    })
+    const jobs = await projectService.getJobs(jwt, req.params.id).then(jobs => {
         return jobs.data
     }).catch((fail) => {
         console.log(fail)
@@ -119,17 +126,21 @@ async function backup(req, res) {
         return null;
     });
     const data = {
+        project,
         jobs: jobs,
         envVars: envVars,
         apps: apps,
         pipelines: pipelines
     };
-    const compressed = zip.file("data.json", JSON.stringify(data));
-    zip.generateNodeStream({ type: 'nodebuffer', streamFiles: true })
-        .pipe(fs.createWriteStream("data.zip"));
-    res.setHeader('Content-Length', compressed.length);
-    res.write(compressed, 'binary');
-    res.end();
+
+    const UUID = uuid();
+    const compressed = JSON.stringify(data);
+    await fs.writeFileSync('storage/' + req.params.id + '.json', compressed)
+    const loadedFile = await fs.readFileSync('storage/' + req.params.id + '.json')
+    res.set('Content-Type', 'application/json')
+    res.set('Content-Disposition', 'attachment; filename=' + req.params.id + '.json');
+    res.set('Content-Length', loadedFile.length);
+    res.end(loadedFile, 'binary');
 }
 
 module.exports = {

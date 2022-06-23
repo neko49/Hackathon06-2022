@@ -14,6 +14,23 @@ module.exports = {
         `
     },
 
+    PROJECT_INFORMATIONS: (projectId) => {
+        return {
+            query: `
+            query{
+              project(id: "` + projectId + `"){
+                id,
+                name,
+                creator,
+                description,
+                jobsCount,
+                status
+              }
+            }
+        `
+        }
+    },
+
     PROJECT_JOBS: (projectId) => {
         return {
             query: `
